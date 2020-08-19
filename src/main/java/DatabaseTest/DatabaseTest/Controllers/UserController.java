@@ -56,6 +56,8 @@ public class UserController {
 		ReadExcel();
 	}
 	
+	
+	// ReadExcel File from resources folder
 	public void ReadExcel() {
 		
 		String ExcelFileName = "C:\\Users\\Debomac\\Desktop\\DatabaseTest\\src\\main\\resources\\Excel.xlsx";
@@ -98,12 +100,16 @@ public class UserController {
 	}
 	
 	
+	
+	// Shows all users
 	@GetMapping(path="/")
 	  public @ResponseBody Iterable<User> getAllUsers() {
 	    // This returns a JSON or XML with the users
 	    return userRepository.findAll();
 	  }
 	
+	
+	// Creates a new User
 	@PostMapping(path="/add" , consumes = "application/json" , produces = "text/html") // Map ONLY POST Requests
 	  public @ResponseBody String addNewUser (@RequestBody User	user) {
 	    // @ResponseBody means the returned String is the response, not a view name
@@ -112,6 +118,8 @@ public class UserController {
 	    return "saved";
 	  }
 	
+	
+	//Finds User by user_id
 	 @GetMapping(path="/user/show" , consumes = "application/json" )
 	 public @ResponseBody User getProduct(@RequestBody User user) throws Exception{
 		 
@@ -128,21 +136,5 @@ public class UserController {
 	    }
 	 
 	 
-	// https://www.baeldung.com/java-microsoft-excel
-	 
-	 // https://github.com/javaee/metro-jax-ws#auth
-	 
-	 // https://docs.spring.io/spring-security/site/docs/5.0.16.RELEASE/guides/html5/helloworld-boot.html
-	 
-	 // https://mkyong.com/spring-boot/spring-rest-spring-security-example/
-	 
-	// https://dzone.com/articles/spring-boot-security-json-web-tokenjwt-hello-world
-	 
-	 // https://www.baeldung.com/spring-security-oauth-jwt
-	 
-	// ResponseBuilder response = Response.ok((Obj
-	    //         ect) file);
-	    
-	    // response.header("Content-Disposition",
-	            //    "attachment; filename=new-excel-file.xls");
+	
 	}
